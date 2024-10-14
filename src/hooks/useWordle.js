@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-const useWordle = (solution) => {
+const useWordle = (solution, numberOfGuesses) => {
   const [turn, setTurn] = useState(0) 
   const [currentGuess, setCurrentGuess] = useState('')
-  const [guesses, setGuesses] = useState([...Array(4)]) // each guess is an array
+  const [guesses, setGuesses] = useState([...Array(numberOfGuesses)]) // each guess is an array
   const [history, setHistory] = useState([]) // each guess is a string
   const [isCorrect, setIsCorrect] = useState(false)
   const [usedKeys, setUsedKeys] = useState({}) // {a: 'grey', b: 'green', c: 'yellow'} etc
@@ -81,8 +81,8 @@ const useWordle = (solution) => {
   const handleKeyup = ({ key }) => {
     let solution_length = solution.length
     if (key === 'Enter') {
-      // only add guess if turn is less than 5
-      if (turn > 5) {
+      // only add guess if turn is less than max limit
+      if (turn > numberOfGuesses) {
         console.log('you used all your guesses!')
         return
       }
@@ -109,6 +109,11 @@ const useWordle = (solution) => {
       }
     }
   }
+
+  useEffect(() => {
+    setGuesses([...Array(numberOfGuesses)]); 
+  }, [numberOfGuesses]);
+
 
   return {turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup}
 }

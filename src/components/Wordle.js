@@ -7,6 +7,7 @@ import Keypad from './Keypad'
 import Modal from './Modal'
 
 export default function Wordle({ solution , category, split }) {
+  const [numberOfGuesses, setNumberOfGuesses] = useState(5);
   const solutionWithoutSpaces = solution.replace(/\sg/,"");
   const { currentGuess, 
           guesses, 
@@ -14,11 +15,16 @@ export default function Wordle({ solution , category, split }) {
           isCorrect, 
           usedKeys, 
           handleKeyup 
-        } = useWordle(solutionWithoutSpaces)
+        } = useWordle(solutionWithoutSpaces, numberOfGuesses)
         
   const [showModal, setShowModal] = useState(false)
   const [showClue, setShowClue] = useState(false)
-  
+
+  const useClue = () => {
+    setShowClue((prev) => !prev)
+    setNumberOfGuesses((prev) => prev - 1);
+  }
+
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup)
 
@@ -26,7 +32,7 @@ export default function Wordle({ solution , category, split }) {
       setTimeout(() => setShowModal(true), 2000)
       window.removeEventListener('keyup', handleKeyup)
     }
-    if (turn > 3) { 
+    if (turn >= numberOfGuesses - 1) { 
       setTimeout(() => setShowModal(true), 2000)
       window.removeEventListener('keyup', handleKeyup)
     }
@@ -37,8 +43,11 @@ export default function Wordle({ solution , category, split }) {
   return (
     <div>
       <div className='clue'>
-      <button onClick={()=> setShowClue(!showClue)}>Need a clue?</button>
+        {!showClue && (<>
+      <button onClick={useClue}>Need a clue?</button>
+      </>)}
       {showClue && <p>{category}</p>}
+      
       </div>
       <Grid 
       guesses={guesses} 

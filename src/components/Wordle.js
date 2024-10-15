@@ -5,9 +5,14 @@ import useWordle from '../hooks/useWordle'
 import Grid from './Grid'
 import Keypad from './Keypad'
 import Modal from './Modal'
+import Instructions from './Instructions'
+import Clue from './Clue'
+import Filter from './Filter'
 
-export default function Wordle({ solution , category, split }) {
+export default function Wordle({ solution , clue, split, 
+filterByCategory, setFilterByCategory}) {
   const [numberOfGuesses, setNumberOfGuesses] = useState(5);
+  const [showInstructionsModal, setShowInstructionsModal] = useState(false);
   const solutionWithoutSpaces = solution.replace(/\sg/,"");
   const { currentGuess, 
           guesses, 
@@ -20,11 +25,15 @@ export default function Wordle({ solution , category, split }) {
   const [showModal, setShowModal] = useState(false)
   const [showClue, setShowClue] = useState(false)
 
+  const hideFilter = ['Club', 'Ground/Stadium', 'Player']
+                      .includes(filterByCategory);
+
   const useClue = () => {
     setShowClue((prev) => !prev)
     setNumberOfGuesses((prev) => prev - 1);
   }
 
+  console.log('no. of guesses', numberOfGuesses)
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup)
 
@@ -32,7 +41,7 @@ export default function Wordle({ solution , category, split }) {
       setTimeout(() => setShowModal(true), 2000)
       window.removeEventListener('keyup', handleKeyup)
     }
-    if (turn >= numberOfGuesses - 1) { 
+    if (turn >= numberOfGuesses) { 
       setTimeout(() => setShowModal(true), 2000)
       window.removeEventListener('keyup', handleKeyup)
     }
@@ -40,14 +49,32 @@ export default function Wordle({ solution , category, split }) {
     return () => window.removeEventListener('keyup', handleKeyup)
   }, [handleKeyup, isCorrect, turn])
 
+  
+
   return (
     <div>
-      <div className='clue'>
-        {!showClue && (<>
-      <button onClick={useClue}>Need a clue?</button>
-      </>)}
-      {showClue && <p>{category}</p>}
-      
+      <div className='helpers-row'>
+        <div className='helper-div'>
+      <Filter 
+      filterByCategory={filterByCategory}
+      setFilterByCategory={setFilterByCategory}
+      setNumberOfGuesses={setNumberOfGuesses}
+      hideFilter={hideFilter}
+      />
+        </div>
+        <div className='helper-div'>
+      <Instructions 
+      showInstructionsModal={showInstructionsModal}
+      setShowInstructionsModal={setShowInstructionsModal}
+      />
+        </div>
+      <div className='helper-div'>
+       <Clue 
+      showClue={showClue}
+      useClue={useClue}
+      clue={clue}
+      />
+        </div>
       </div>
       <Grid 
       guesses={guesses} 

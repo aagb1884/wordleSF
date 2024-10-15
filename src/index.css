@@ -4,13 +4,46 @@ body {
   font-family: verdana;
   margin: 0;
 }
-h1 {
-  font-size: 1.2em;
-  padding: 20px 0;
+
+/* title */
+.title {
+  line-height: 0;
   border-bottom: 1px solid #eee;
-  margin: 0 0 30px 0;
-  color: #333;
+  margin: 5px;
 }
+
+.title-header {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 100px;
+}
+
+/* helpers-row */
+.helpers-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+
+.helper-div {
+  float: left;
+  width: 33.33%;
+  border-right: 1px solid #eee;
+  padding: 20px;
+}
+
+.instructions {
+  text-align: left;
+}
+
+.instructions-list {
+  
+  padding-left: 0;
+  margin: 0; 
+}
+
 /* rows */
 .row {
   text-align: center;
@@ -157,6 +190,7 @@ h1 {
   color: #fff;
   transition: all 0.3s ease-in;
 }
+
 .modal {
   background: rgba(255,255,255,0.7);
   position: fixed;
@@ -164,6 +198,13 @@ h1 {
   height: 100%;
   top: 0;
   left: 0;
+  align-items: center;
+}
+
+.modal-return-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 .modal div {
   max-width: 480px;

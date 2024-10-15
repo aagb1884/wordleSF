@@ -4,31 +4,36 @@ import solutions from './data/solutions';
 
 function App() {
   const [solution, setSolution] = useState(null);
-  const [category, setCategory] = useState(null);
+  const [clue, setClue] = useState(null);
   const [split, setSplit] = useState(null);
-  
-  // useEffect(() => {
-  //   fetch('http://localhost:3001/solutions')
-  //     .then(res => res.json())
-  //     .then(json => {
-  //       const randomSolution = json[Math.floor(Math.random()*json.length)]
-  //       setSolution(randomSolution.word);
-  //       setCategory(randomSolution.category);
-  //       setSplit(JSON.parse(randomSolution.split))
-  //     })
-  // }, [setSolution, setCategory, setSplit])
+  const [filterByCategory, setFilterByCategory] = useState('All');
+
+  const filteredSolutions = filterByCategory === 'All'
+  ? solutions 
+  : solutions.filter((solution) => solution.category === filterByCategory);
+
   useEffect(() => {
-    const randomSolution = solutions[Math.floor(Math.random() * solutions.length)];
-    
+    const randomSolution = filteredSolutions[Math.floor(Math.random() * filteredSolutions.length)];
+console.log(randomSolution.category)
     setSolution(randomSolution.word);
-    setCategory(randomSolution.category);
+    setClue(randomSolution.clue);
     setSplit(JSON.parse(randomSolution.split));
-  }, [setSolution, setCategory, setSplit]);
+  }, [filterByCategory, filteredSolutions, setSolution, setClue, setSplit]);
+
 
   return (
     <div className="App">
-      <h1>Wordle (Scottish Football)</h1>
-      {solution && split && <Wordle solution={solution} category={category} split={split} />}
+      <div className='title'>
+      <h1 className='title-header'>STRAMASH!</h1>
+      <p>It's not <i>not</i> Scottish Football Wordle</p>
+      </div>
+
+      {solution && split && <Wordle 
+      solution={solution} 
+      clue={clue} 
+      split={split}
+      filterByCategory={filterByCategory}
+      setFilterByCategory={setFilterByCategory} />}
     </div>
   )
 }

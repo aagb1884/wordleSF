@@ -27,6 +27,8 @@ filterByCategory, setFilterByCategory}) {
   const [showClue, setShowClue] = useState(false)
   const inputRef = useRef(null);
 
+  
+
   useEffect(() => {
     const focusInput = () => {
       if (inputRef.current) {
@@ -34,12 +36,14 @@ filterByCategory, setFilterByCategory}) {
       }
     };
 
-    focusInput(); // Focus the input on component load
+    focusInput(); 
 
-    window.addEventListener('touchstart', focusInput); // Focus on touch start to bring up the keyboard
+    window.addEventListener('touchstart', focusInput); 
+    window.addEventListener('click', focusInput);
 
     return () => {
-      window.removeEventListener('touchstart', focusInput); // Cleanup
+      window.removeEventListener('touchstart', focusInput); 
+      window.removeEventListener('click', focusInput);
     };
   }, []);
 

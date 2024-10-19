@@ -39,7 +39,7 @@ const useWordle = (solution, numberOfGuesses) => {
   // update the isCorrect state if the guess is correct
   // add one to the turn state
   const addNewGuess = (formattedGuess) => {
-    if (currentGuess === solution) {
+    if (currentGuess.toLowerCase() === solution) {
       setIsCorrect(true)
     }
     setGuesses(prevGuesses => {

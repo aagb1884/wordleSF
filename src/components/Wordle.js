@@ -28,22 +28,26 @@ filterByCategory, setFilterByCategory}) {
   const inputRef = useRef(null);
 
   useEffect(() => {
+    const focusInput = () => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    };
+
+    focusInput(); // Focus the input on component load
+
+    window.addEventListener('touchstart', focusInput); // Focus on touch start to bring up the keyboard
+
+    return () => {
+      window.removeEventListener('touchstart', focusInput); // Cleanup
+    };
+  }, []);
+
+  const refocusInput = () => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-
-  const handleTouch = () => {
-    if (inputRef.current) {
-      inputRef.current.focus(); 
-    }
   };
-
-  window.addEventListener('touchstart', handleTouch);
-
-  return () => {
-    window.removeEventListener('touchstart', handleTouch);
-  };
-}, []);
 
   const hideFilter = ['Club', 'Ground/Stadium', 'Player']
                       .includes(filterByCategory) ||
@@ -53,6 +57,7 @@ filterByCategory, setFilterByCategory}) {
     setShowClue((prev) => !prev)
     setNumberOfGuesses((prev) => prev - 1);
     setExtraGuesses((prev) => prev + 1);
+    refocusInput();
   }
 
   useEffect(() => {
@@ -81,12 +86,14 @@ filterByCategory, setFilterByCategory}) {
       setNumberOfGuesses={setNumberOfGuesses}
       setExtraGuesses={setExtraGuesses}
       hideFilter={hideFilter}
+      refocusInput={refocusInput}
       />
         </div>
         <div className='helper-div'>
       <Instructions 
       showInstructionsModal={showInstructionsModal}
       setShowInstructionsModal={setShowInstructionsModal}
+      refocusInput={refocusInput}
       />
         </div>
       <div className='helper-div'>

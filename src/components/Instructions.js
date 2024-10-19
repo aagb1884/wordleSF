@@ -1,6 +1,6 @@
 import InstructionsModal from "./InstructionsModal";
 
-const Instructions = ({showInstructionsModal, setShowInstructionsModal}) => {
+const Instructions = ({showInstructionsModal, setShowInstructionsModal, refocusInput}) => {
     return ( 
         <div className='how-it-work'>
         <button
@@ -10,7 +10,8 @@ const Instructions = ({showInstructionsModal, setShowInstructionsModal}) => {
         {showInstructionsModal && 
         (<InstructionsModal 
         showInstructionsModal={showInstructionsModal}
-        setShowInstructionsModal={setShowInstructionsModal}/>
+        setShowInstructionsModal={setShowInstructionsModal}
+        refocusInput={refocusInput}/>
         )}
         
       </div>

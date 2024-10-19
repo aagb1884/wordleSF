@@ -1,6 +1,12 @@
 import React from 'react'
 
-export default function InstructionsModal({showInstructionsModal, setShowInstructionsModal}) {
+export default function InstructionsModal({showInstructionsModal, setShowInstructionsModal, refocusInput}) {
+   
+  const closeModal = () => {
+    setShowInstructionsModal(!showInstructionsModal)
+    refocusInput();
+  }
+  
   return (
     <div className="modal">
          <div className='instructions'>
@@ -23,7 +29,7 @@ export default function InstructionsModal({showInstructionsModal, setShowInstruc
             <br/>
             <button 
             className='modal-return-button'
-            onClick={() => setShowInstructionsModal(!showInstructionsModal)}>
+            onClick={() => closeModal()}>
                 Return to Game Screen</button>
           </div>
     </div>

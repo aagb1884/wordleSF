@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import useWordle from '../hooks/useWordle'
 
 // components
@@ -25,6 +25,25 @@ filterByCategory, setFilterByCategory}) {
         
   const [showModal, setShowModal] = useState(false)
   const [showClue, setShowClue] = useState(false)
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+
+  const handleTouch = () => {
+    if (inputRef.current) {
+      inputRef.current.focus(); 
+    }
+  };
+
+  window.addEventListener('touchstart', handleTouch);
+
+  return () => {
+    window.removeEventListener('touchstart', handleTouch);
+  };
+}, []);
 
   const hideFilter = ['Club', 'Ground/Stadium', 'Player']
                       .includes(filterByCategory) ||
@@ -87,6 +106,16 @@ filterByCategory, setFilterByCategory}) {
       split={split} />
       <Keypad usedKeys={usedKeys} />
       {showModal && <Modal isCorrect={isCorrect} turn={turn} solution={solution} extraGuesses={extraGuesses}/>}
+      <input
+        type="text"
+        ref={inputRef}
+        onKeyUp={handleKeyup}
+        style={{
+          position: 'absolute',
+          opacity: 0,           
+          pointerEvents: 'none', 
+        }}
+      />
     </div>
   )
 }

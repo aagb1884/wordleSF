@@ -115,11 +115,6 @@ const useWordle = (solution, numberOfGuesses) => {
       setGuesses(prevGuesses => prevGuesses.slice(0, numberOfGuesses));
     }, [numberOfGuesses])
 
-  // useEffect(() => {
-  //   setGuesses([...Array(numberOfGuesses)]); 
-  // }, [numberOfGuesses]);
-
-
   return {turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup}
 }
 

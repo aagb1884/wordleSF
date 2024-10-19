@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Modal({ isCorrect, solution, turn }) {
+export default function Modal({ isCorrect, solution, turn, extraGuesses }) {
 
   function refreshPage() {
     window.location.reload()
@@ -12,7 +12,7 @@ export default function Modal({ isCorrect, solution, turn }) {
         <div>
           <h1>You Win!</h1>
           <p className="solution">{solution}</p>
-          <p>You found the solution in {turn} guesses</p>
+          <p>You found the solution in {turn + extraGuesses} guesses.</p>
           <button onClick={refreshPage}>Try again</button>
         </div>
       )}

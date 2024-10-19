@@ -1,8 +1,37 @@
 body {
   text-align: center;
   font-size: 1em;
-  font-family: verdana;
+  font-family: "Bebas Neue", sans-serif;
   margin: 0;
+}
+
+.App{
+  overflow: scroll;
+}
+
+.transparent-div {
+  background-color: rgba(255, 255, 255, 0.753);
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+.image-div {  
+  background-image: url('/src/images/New_Douglas_Park_-_1.jpg');
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  position: fixed;
+  
 }
 
 /* title */
@@ -44,6 +73,12 @@ body {
   margin: 0; 
 }
 
+/* buttons */
+.instructions-button, .clue-button {
+  background-color: white;
+}
+
+
 /* rows */
 .row {
   text-align: center;
@@ -52,13 +87,13 @@ body {
 }
 .row > .space-div {
   width: min(2vw,20px);
-  border: 0px solid #bbb;
+  border: 0px solid #4b3939;
 }
 .row > div {
   display: block;
   width: 60px;
   height: 60px;
-  border: 1px solid #bbb;
+  border: 1px solid #4b3939;
   margin: 4px;
   text-align: center;
   line-height: 60px;
@@ -260,3 +295,57 @@ body {
     border-color: #333;
   }
 }
+
+/* responsive */
+
+@media only screen and (max-width: 600px) {
+  .title-header {
+    font-size: 60px;
+  }
+  .row {
+    padding: 0px 5px;
+  }
+  .row > div {
+    width: 35px;
+    height: 35px;
+    margin: 3px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 1.5em;
+  }
+
+  .keypad > div {
+    margin: 5px;
+    width: 30px;
+    height: 40px;
+    border-radius: 3px;
+    line-height: 40px;
+  }
+}
+
+@media only screen and (min-width: 700px),
+screen and (min-height: 300) {
+  .title-header {
+    font-size: 60px;
+  }
+  .row {
+    padding: 0px 5px;
+  }
+  .row > div {
+    width: 35px;
+    height: 35px;
+    margin: 3px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 1.5em;
+  }
+
+  .keypad > div {
+    margin: 5px;
+    width: 30px;
+    height: 40px;
+    border-radius: 3px;
+    line-height: 40px;
+  }
+}
+

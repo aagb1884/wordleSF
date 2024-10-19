@@ -6,8 +6,13 @@ export default function InstructionsModal({showInstructionsModal, setShowInstruc
          <div className='instructions'>
             <ul className='instructions-list'>
               <li>You have to guess the name of a Scottish football club, ground or player.</li>
-              <li>You have five guesses.</li>
-              <li>You can ask for a clue, but you will lose a guess if you do.</li>
+              <li>You have four (4) guesses.</li>
+              <li>You can ask for a clue, but: </li>
+                <ul>
+                  <li>You will lose a guess if you do.</li>
+                  <li>You will not be able to use the filter (see below).</li>
+                  <li>Some clues are more helpful than others.</li>
+                </ul>
               <li>Before you start guessing you can choose to filter by category, but:
                 <ul>
                 <li>You will lose a guess if you do.</li> 

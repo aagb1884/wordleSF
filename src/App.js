@@ -14,18 +14,20 @@ function App() {
 
   useEffect(() => {
     const randomSolution = filteredSolutions[Math.floor(Math.random() * filteredSolutions.length)];
-console.log(randomSolution.category)
+
     setSolution(randomSolution.word);
     setClue(randomSolution.clue);
     setSplit(JSON.parse(randomSolution.split));
-  }, [filterByCategory, filteredSolutions, setSolution, setClue, setSplit]);
+  }, [filterByCategory, setSolution, setClue, setSplit]);
 
 
   return (
     <div className="App">
+      <div className='image-div'>
+      <div className='transparent-div'> 
       <div className='title'>
       <h1 className='title-header'>STRAMASH!</h1>
-      <p>It's not <i>not</i> Scottish Football Wordle</p>
+      <p>It's not not Scottish Football Wordle</p>
       </div>
 
       {solution && split && <Wordle 
@@ -34,6 +36,8 @@ console.log(randomSolution.category)
       split={split}
       filterByCategory={filterByCategory}
       setFilterByCategory={setFilterByCategory} />}
+      </div>
+      </div>
     </div>
   )
 }

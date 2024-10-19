@@ -11,7 +11,8 @@ import Filter from './Filter'
 
 export default function Wordle({ solution , clue, split, 
 filterByCategory, setFilterByCategory}) {
-  const [numberOfGuesses, setNumberOfGuesses] = useState(5);
+  const [numberOfGuesses, setNumberOfGuesses] = useState(4);
+  const [extraGuesses, setExtraGuesses] = useState(0);
   const [showInstructionsModal, setShowInstructionsModal] = useState(false);
   const solutionWithoutSpaces = solution.replace(/\sg/,"");
   const { currentGuess, 
@@ -19,21 +20,22 @@ filterByCategory, setFilterByCategory}) {
           turn, 
           isCorrect, 
           usedKeys, 
-          handleKeyup 
+          handleKeyup,
         } = useWordle(solutionWithoutSpaces, numberOfGuesses)
         
   const [showModal, setShowModal] = useState(false)
   const [showClue, setShowClue] = useState(false)
 
   const hideFilter = ['Club', 'Ground/Stadium', 'Player']
-                      .includes(filterByCategory);
+                      .includes(filterByCategory) ||
+                      guesses[0]
 
   const useClue = () => {
     setShowClue((prev) => !prev)
     setNumberOfGuesses((prev) => prev - 1);
+    setExtraGuesses((prev) => prev + 1);
   }
 
-  console.log('no. of guesses', numberOfGuesses)
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup)
 
@@ -47,7 +49,7 @@ filterByCategory, setFilterByCategory}) {
     }
 
     return () => window.removeEventListener('keyup', handleKeyup)
-  }, [handleKeyup, isCorrect, turn])
+  }, [handleKeyup, isCorrect, turn, numberOfGuesses])
 
   
 
@@ -59,6 +61,7 @@ filterByCategory, setFilterByCategory}) {
       filterByCategory={filterByCategory}
       setFilterByCategory={setFilterByCategory}
       setNumberOfGuesses={setNumberOfGuesses}
+      setExtraGuesses={setExtraGuesses}
       hideFilter={hideFilter}
       />
         </div>
@@ -83,7 +86,7 @@ filterByCategory, setFilterByCategory}) {
       length={solutionWithoutSpaces.length} 
       split={split} />
       <Keypad usedKeys={usedKeys} />
-      {showModal && <Modal isCorrect={isCorrect} turn={turn} solution={solution} />}
+      {showModal && <Modal isCorrect={isCorrect} turn={turn} solution={solution} extraGuesses={extraGuesses}/>}
     </div>
   )
 }

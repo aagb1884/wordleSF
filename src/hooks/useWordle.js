@@ -110,9 +110,14 @@ const useWordle = (solution, numberOfGuesses) => {
     }
   }
 
-  useEffect(() => {
-    setGuesses([...Array(numberOfGuesses)]); 
-  }, [numberOfGuesses]);
+    // remove last guess from array, rather than first
+    useEffect(() => {
+      setGuesses(prevGuesses => prevGuesses.slice(0, numberOfGuesses));
+    }, [numberOfGuesses])
+
+  // useEffect(() => {
+  //   setGuesses([...Array(numberOfGuesses)]); 
+  // }, [numberOfGuesses]);
 
 
   return {turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup}

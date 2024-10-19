@@ -1,12 +1,14 @@
-const Filter = ({filterByCategory, setFilterByCategory, setNumberOfGuesses, hideFilter}) => {
+const Filter = ({filterByCategory, setFilterByCategory, setNumberOfGuesses, hideFilter, setExtraGuesses}) => {
     return ( 
         <div className="media-filter">
+            {filterByCategory !== 'All' ? filterByCategory : ''}
             {!hideFilter && (<>
              <select
                     value={filterByCategory}
                     onChange={(e) => {
                     setFilterByCategory(e.target.value);
                     setNumberOfGuesses((prev) => prev - 1);
+                    setExtraGuesses((prev) => prev + 1);
                     }}
                 className="custom-select"
                 aria-label="Filter Words by Category">`

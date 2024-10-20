@@ -27,7 +27,7 @@ filterByCategory, setFilterByCategory}) {
   const [showClue, setShowClue] = useState(false)
   const inputRef = useRef(null);
 
-  
+  console.log(currentGuess)
 
   useEffect(() => {
     const focusInput = () => {
@@ -110,7 +110,7 @@ filterByCategory, setFilterByCategory}) {
       </div>
       <Grid 
       guesses={guesses} 
-      currentGuess={currentGuess} 
+      currentGuess={currentGuess.toLowerCase()} 
       turn={turn} 
       length={solutionWithoutSpaces.length} 
       split={split} />

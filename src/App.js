@@ -6,19 +6,17 @@ function App() {
   const [solution, setSolution] = useState(null);
   const [clue, setClue] = useState(null);
   const [split, setSplit] = useState(null);
-  const [filterByCategory, setFilterByCategory] = useState('All');
+  const [category, setCategory] = useState(null);
 
-  const filteredSolutions = filterByCategory === 'All'
-  ? solutions 
-  : solutions.filter((solution) => solution.category === filterByCategory);
 
   useEffect(() => {
-    const randomSolution = filteredSolutions[Math.floor(Math.random() * filteredSolutions.length)];
-
+    const randomSolution = solutions[Math.floor(Math.random() * solutions.length)];
+  
     setSolution(randomSolution.word);
+    setCategory(randomSolution.category);
     setClue(randomSolution.clue);
     setSplit(JSON.parse(randomSolution.split));
-  }, [filterByCategory, setSolution, setClue, setSplit]);
+  }, [setCategory, setSolution, setClue, setSplit]);
 
 
   return (
@@ -34,8 +32,7 @@ function App() {
       solution={solution} 
       clue={clue} 
       split={split}
-      filterByCategory={filterByCategory}
-      setFilterByCategory={setFilterByCategory} />}
+      category={category} />}
       </div>
       </div>
     </div>

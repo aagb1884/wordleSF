@@ -9,8 +9,7 @@ import Instructions from './Instructions'
 import Clue from './Clue'
 import Filter from './Filter'
 
-export default function Wordle({ solution , clue, split, 
-filterByCategory, setFilterByCategory}) {
+export default function Wordle({ solution , clue, split, category}) {
   const [numberOfGuesses, setNumberOfGuesses] = useState(4);
   const [extraGuesses, setExtraGuesses] = useState(0);
   const [showInstructionsModal, setShowInstructionsModal] = useState(false);
@@ -25,10 +24,10 @@ filterByCategory, setFilterByCategory}) {
         
   const [showModal, setShowModal] = useState(false)
   const [showClue, setShowClue] = useState(false)
+  const [showCategory, setShowCategory] = useState(false);
   const inputRef = useRef(null);
 
-  console.log(currentGuess)
-
+  // get keyboard on mobile/tablet
   useEffect(() => {
     const focusInput = () => {
       if (inputRef.current) {
@@ -53,12 +52,8 @@ filterByCategory, setFilterByCategory}) {
     }
   };
 
-  const hideFilter = ['Club', 'Ground/Stadium', 'Player']
-                      .includes(filterByCategory) ||
-                      guesses[0]
-
-  const useClue = () => {
-    setShowClue((prev) => !prev)
+    function useClues(setState)  {
+    setState((prev) => !prev)
     setNumberOfGuesses((prev) => prev - 1);
     setExtraGuesses((prev) => prev + 1);
     refocusInput();
@@ -85,12 +80,10 @@ filterByCategory, setFilterByCategory}) {
       <div className='helpers-row'>
         <div className='helper-div'>
       <Filter 
-      filterByCategory={filterByCategory}
-      setFilterByCategory={setFilterByCategory}
-      setNumberOfGuesses={setNumberOfGuesses}
-      setExtraGuesses={setExtraGuesses}
-      hideFilter={hideFilter}
-      refocusInput={refocusInput}
+      showCategory={showCategory}
+      setShowCategory={setShowCategory}
+      useClues={useClues}
+      category={category}
       />
         </div>
         <div className='helper-div'>
@@ -103,14 +96,15 @@ filterByCategory, setFilterByCategory}) {
       <div className='helper-div'>
        <Clue 
       showClue={showClue}
-      useClue={useClue}
+      setShowClue={setShowClue}
+      useClues={useClues}
       clue={clue}
       />
         </div>
       </div>
       <Grid 
       guesses={guesses} 
-      currentGuess={currentGuess.toLowerCase()} 
+      currentGuess={currentGuess} 
       turn={turn} 
       length={solutionWithoutSpaces.length} 
       split={split} />
@@ -120,6 +114,7 @@ filterByCategory, setFilterByCategory}) {
         type="text"
         ref={inputRef}
         onKeyUp={handleKeyup}
+        autoCapitalize="none"
         style={{
           position: 'absolute',
           opacity: 0,           

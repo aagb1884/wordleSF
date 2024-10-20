@@ -65,6 +65,7 @@ body {
 
 .instructions {
   text-align: left;
+  line-height: 2;
 }
 
 .instructions-list {
@@ -74,7 +75,7 @@ body {
 }
 
 /* buttons */
-.instructions-button, .clue-button {
+.instructions-button, .clue-button, .category-button {
   background-color: white;
 }
 

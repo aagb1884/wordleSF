@@ -10,7 +10,7 @@ import Clue from './Clue'
 import Filter from './Filter'
 
 export default function Wordle({ solution , clue, split, category}) {
-  const [numberOfGuesses, setNumberOfGuesses] = useState(4);
+  const [numberOfGuesses, setNumberOfGuesses] = useState(5);
   const [extraGuesses, setExtraGuesses] = useState(0);
   const [showInstructionsModal, setShowInstructionsModal] = useState(false);
   const solutionWithoutSpaces = solution.replace(/\sg/,"");

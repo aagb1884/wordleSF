@@ -109,7 +109,7 @@ export default function Wordle({ solution , clue, split, category}) {
       length={solutionWithoutSpaces.length} 
       split={split} />
       <Keypad usedKeys={usedKeys} />
-      {showModal && <Modal isCorrect={isCorrect} turn={turn} solution={solution} extraGuesses={extraGuesses}/>}
+      {showModal && <Modal isCorrect={isCorrect} turn={turn} split={split} solution={solution} extraGuesses={extraGuesses}/>}
       <input
         type="text"
         ref={inputRef}

@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was based on [this tutorial](https://cupofcode.blog/wordle-in-react-multiword/) to create a Wordle style app.
 
 ## Available Scripts
 

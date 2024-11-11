@@ -37,13 +37,13 @@ export default function Wordle({ solution , clue, split, category}) {
       }
     };
 
-    focusInput()
+    setTimeout(focusInput(), 300); 
 
-    window.addEventListener('touchend', focusInput); 
+    window.addEventListener('touchstart', focusInput); 
     window.addEventListener('click', focusInput);
 
     return () => {
-      window.removeEventListener('touchend', focusInput); 
+      window.removeEventListener('touchstart', focusInput); 
       window.removeEventListener('click', focusInput);
     };
   }, []);

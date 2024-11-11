@@ -39,7 +39,7 @@ export default function Wordle({ solution , clue, split, category}) {
 
     setTimeout(focusInput, 300); 
 
-    window.addEventListener('touchend', focusInput); 
+    window.addEventListener('touchstart', focusInput); 
     window.addEventListener('click', focusInput);
 
     return () => {

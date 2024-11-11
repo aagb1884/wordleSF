@@ -31,19 +31,17 @@ export default function Wordle({ solution , clue, split, category}) {
   useEffect(() => {
     const focusInput = () => {
       if (inputRef.current) {
-        requestAnimationFrame(() => {
         inputRef.current.focus();
-      })
       }
     };
 
     setTimeout(focusInput(), 300); 
 
-    window.addEventListener('touchstart', focusInput); 
+    window.addEventListener('touchend', focusInput); 
     window.addEventListener('click', focusInput);
 
     return () => {
-      window.removeEventListener('touchstart', focusInput); 
+      window.removeEventListener('touchend', focusInput); 
       window.removeEventListener('click', focusInput);
     };
   }, []);

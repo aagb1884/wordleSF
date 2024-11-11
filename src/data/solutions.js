@@ -114,11 +114,11 @@
       {"id": 113, "word": "scottbain", "category": "Player", "split":"[4]", "clue": "Former Dundee keeper."},
       {"id": 114, "word": "curtismain", "category": "Player", "split":"[5]", "clue": "Journeyman striker."},
       {"id": 115, "word": "ryanstrain", "category": "Player", "split":"[3]", "clue": "Australian full-back."},
-      {"id": 116, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
-      {"id": 117, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
-      {"id": 118, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
-      {"id": 119, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
-      {"id": 120, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
+      {"id": 116, "word": "bradlyons", "category": "Player", "split":"[3]", "clue": "Northern Irish central midfielder.."},
+      {"id": 117, "word": "rosslaidlaw", "category": "Player", "split":"[3]", "clue": "Goalkeeper with over 140 top flight apperances."},
+      {"id": 118, "word": "jasonholt", "category": "Player", "split":"[4]", "clue": "Well travelled midfielder from Musselburgh."},
+      {"id": 119, "word": "martinboyle", "category": "Player", "split":"[5]", "clue": "Former Montrose winger with plenty of caps for Australia."},
+      {"id": 120, "word": "theobair", "category": "Player", "split":"[3]", "clue": "Scored one goal for St Johnstone."},
     ];
 
     export default solutions;

@@ -19,7 +19,7 @@ export default function Wordle({ solution , clue, split, category}) {
           turn, 
           isCorrect, 
           usedKeys, 
-          handleKeyup,
+          handleKeyup
         } = useWordle(solutionWithoutSpaces, numberOfGuesses)
         
   const [showModal, setShowModal] = useState(false)
@@ -31,13 +31,15 @@ export default function Wordle({ solution , clue, split, category}) {
   useEffect(() => {
     const focusInput = () => {
       if (inputRef.current) {
+        requestAnimationFrame(() => {
         inputRef.current.focus();
+      })
       }
     };
 
-    focusInput(); 
+    setTimeout(focusInput, 300); 
 
-    window.addEventListener('touchstart', focusInput); 
+    window.addEventListener('touchend', focusInput); 
     window.addEventListener('click', focusInput);
 
     return () => {
@@ -109,7 +111,13 @@ export default function Wordle({ solution , clue, split, category}) {
       length={solutionWithoutSpaces.length} 
       split={split} />
       <Keypad usedKeys={usedKeys} />
-      {showModal && <Modal isCorrect={isCorrect} turn={turn} split={split} solution={solution} extraGuesses={extraGuesses}/>}
+      {showModal && 
+      <Modal isCorrect={isCorrect} 
+      turn={turn} 
+      split={split} 
+      solution={solution} 
+      extraGuesses={extraGuesses}
+      />}
       <input
         type="text"
         ref={inputRef}

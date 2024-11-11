@@ -110,6 +110,15 @@
       {"id": 109, "word": "kevinvanveen", "category": "Player", "split":"[4, 7]", "clue": "Prolific Dutch striker currently on loan."},
       {"id": 110, "word": "ianishagi", "category": "Player", "split":"[4]", "clue": "Son of a legend."},
       {"id": 111, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
+      {"id": 112, "word": "cyrieldessers", "category": "Player", "split":"[5]", "clue": "Belgian-born striker signed from Cremonese."},
+      {"id": 113, "word": "scottbain", "category": "Player", "split":"[4]", "clue": "Former Dundee keeper."},
+      {"id": 114, "word": "curtismain", "category": "Player", "split":"[5]", "clue": "Journeyman striker."},
+      {"id": 115, "word": "ryanstrain", "category": "Player", "split":"[3]", "clue": "Australian full-back."},
+      {"id": 116, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
+      {"id": 117, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
+      {"id": 118, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
+      {"id": 119, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
+      {"id": 120, "word": "barriemckay", "category": "Player", "split":"[5]", "clue": "Left winger and favourite of Mark Warburton."},
     ];
 
     export default solutions;

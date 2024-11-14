@@ -9,7 +9,7 @@ export default function Keypad({ usedKeys }) {
   })
 
   return (
-    <div className="keypad">
+    <div className="stram-keypad">
       {letters && letters.map(l => {
         const color = usedKeys[l.key]
         return (

@@ -2,9 +2,9 @@ import InstructionsModal from "./InstructionsModal";
 
 const Instructions = ({showInstructionsModal, setShowInstructionsModal, refocusInput}) => {
     return ( 
-        <div className='how-it-work'>
+        <div className='stram-how-it-work'>
         <button
-        className='instructions-button'
+        className='stram-instructions-button'
         onClick={() => {setShowInstructionsModal(!showInstructionsModal)}} 
         >How does this work?</button>
         {showInstructionsModal && 

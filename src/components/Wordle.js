@@ -77,8 +77,8 @@ export default function Wordle({ solution , clue, split, category}) {
 
   return (
     <div>
-      <div className='helpers-row'>
-        <div className='helper-div'>
+      <div className='stram-helpers-row'>
+        <div className='stram-helper-div'>
       <Filter 
       showCategory={showCategory}
       setShowCategory={setShowCategory}
@@ -86,14 +86,14 @@ export default function Wordle({ solution , clue, split, category}) {
       category={category}
       />
         </div>
-        <div className='helper-div'>
+        <div className='stram-helper-div'>
       <Instructions 
       showInstructionsModal={showInstructionsModal}
       setShowInstructionsModal={setShowInstructionsModal}
       refocusInput={refocusInput}
       />
         </div>
-      <div className='helper-div'>
+      <div className='stram-helper-div'>
        <Clue 
       showClue={showClue}
       setShowClue={setShowClue}

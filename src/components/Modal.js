@@ -20,11 +20,11 @@ export default function Modal({ isCorrect, solution, split, turn, extraGuesses }
   }
 
   return (
-    <div className="modal">
+    <div className="stram-modal">
       {isCorrect && (
         <div>
           <h1>You Win!</h1>
-          <p className="solution">{splitWord}</p>
+          <p className="stram-solution">{splitWord}</p>
           <p>You found the solution in {turn + extraGuesses} guesses.</p>
           <button onClick={refreshPage}>Try again</button>
         </div>
@@ -32,7 +32,7 @@ export default function Modal({ isCorrect, solution, split, turn, extraGuesses }
       {!isCorrect && (
         <div>
           <h1>Nevermind</h1>
-          <p className="solution">{splitWord}</p>
+          <p className="stram-solution">The answer was: {splitWord}</p>
           <p>Better luck next time</p>
           <button onClick={refreshPage}>Try again</button>
         </div>

@@ -4,7 +4,7 @@ export default function Row({ guess, currentGuess, length, split }) {
 
   if (guess) {
     return (
-      <div className="row past">
+      <div className="stram-row past">
       {guess.map((l, i) => (
         <React.Fragment key={`${i}_frag`}>
           <div key={i} className={l.color}>{l.key}</div>
@@ -20,7 +20,7 @@ export default function Row({ guess, currentGuess, length, split }) {
     let letters = currentGuess.split('')
 
     return (
-      <div className="row current">
+      <div className="stram-row current">
       {letters.map((letter, i) => (
         <React.Fragment key={`${i}_frag`}>
           <div key={i} className="filled">{letter}</div>
@@ -40,7 +40,7 @@ export default function Row({ guess, currentGuess, length, split }) {
   }
 
   return (
-    <div className='row'>
+    <div className='stram-row'>
     {[...Array(length)].map((_, i) => {
       return (
         <React.Fragment key={`${i}_frag`}>
